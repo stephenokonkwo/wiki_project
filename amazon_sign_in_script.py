@@ -24,12 +24,20 @@ expected_result = "Sign in"
 actual_result = driver.find_element(By.XPATH, "//h1['class=a-spacing-small']").text
 assert expected_result == actual_result, f'Test Case Error! expected {expected_result} but got {actual_result}'
 
+#Verify emaiil field present
+driver.find_element(By.ID, 'ap_email')
+
+print('Test case passed')
+driver.quit()
+
+
+
+
+
+
 #expected_result = "Email or mobile phone number"
 #actual_result = driver.find_element(By.XPATH, "//label[contains(text(), 'Email or mobile phone number')]")
 #assert expected_result == actual_result, f'Test case No Good {expected_result} instead got {actual_result}'
 
 
-print('Test case passed')
 
-sleep(8)
-quit()
