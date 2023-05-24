@@ -5,3 +5,8 @@ Feature: Amazon Cart tests
     Given Open amazon main page
     When Click Cart
     Then Verify amazon cart is empty
+
+    Scenario: User item appears in Cart
+    Given Open amazon main page
+    When Click Cart
+    Then Verify that item is in cart
