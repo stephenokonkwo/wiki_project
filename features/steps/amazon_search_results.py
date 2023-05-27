@@ -1,6 +1,6 @@
 from selenium.webdriver.common.by import By
 from behave import given, when, then
-from time import sleep
+# from time import sleep
 
 
 
@@ -9,11 +9,12 @@ def verify_search_results(context, expected_result):
     actual_result = context.driver.find_element(By.XPATH, "//span[@class='a-color-state a-text-bold']").text
     assert expected_result == actual_result, f'Error! Expected {expected_result} but got actual {actual_result}'
 
+
 #assert expected_result in actual_result
 @then('Verify the cart has the right product')
-def verify_Kindle_text_appears_in_product_title(context, expected_result):
+def verify_Kindle_text_appears_in_product_title(context,):
     actual_result = context.driver.find_element(By.CSS_SELECTOR, 'span.a-truncate-cut').text
-    assert expected_result in actual_result
+    assert 'Kindle' in actual_result
 
 
 @when('Click on kindle item')
@@ -29,5 +30,4 @@ def add_item_to_cart(context):
 @when("Go to the Cart Page")
 def open_cart_page(context):
     context.driver.get('https://www.amazon.com/gp/cart/view.html?ref_=nav_cart')
-    from time import sleep
-    sleep(10)
+
