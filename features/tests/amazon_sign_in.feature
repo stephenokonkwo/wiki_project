@@ -1,10 +1,10 @@
 # Created by stephen okonkwo at 5/14/23
 Feature: Amazon Sign in tests
 
-  Scenario: User can see sign in page
-    Given Open amazon main page
-    When Click Orders
-    Then Verify Sign in page opens
+#  Scenario: User can see sign in page
+#    Given Open amazon main page
+#    When Click Orders
+#    Then Verify Sign in page opens
 
 #
 # Scenario: Sign In page can be opened from SignIn popup
@@ -19,5 +19,12 @@ Feature: Amazon Sign in tests
 #   When Wait for 3 sec
 #   Then Verify Sign in is clickable
 #   Then Verify Sign In disappears
+
+
+
+Scenario: Logged out user sees Sign in page when clicking Orders
+ Given Open amazon main page
+ When Click Orders
+ Then Verify Sign in page opens
 
 
