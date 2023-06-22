@@ -12,19 +12,6 @@ KINDLE_RESULT = (By.CSS_SELECTOR,
 BACKPACK_RESULT = (By.CSS_SELECTOR, 'span.a-price-whole')
 
 
-# Then Statements:
-@then('Verify search results shown for {expected_result}')
-def verify_search_results(context, expected_result):
-    context.app.search_results_page.verify_search_results(expected_result)
-
-
-# assert expected_result in actual_result
-@then('Verify the cart has the right product')
-def verify_Kindle_text_appears_in_product_title(context, ):
-    actual_result = context.driver.find_element(By.CSS_SELECTOR, 'span.a-truncate-cut').text
-    assert 'Kindle' in actual_result
-
-
 # When Statements:
 @when('Click on kindle item')
 def click_search_item(context):
@@ -39,3 +26,27 @@ def click_search_item(context):
 @when("Go to the Cart Page")
 def open_cart_page(context):
     context.driver.get('https://www.amazon.com/gp/cart/view.html?ref_=nav_cart')
+
+
+@when('Search for {search_query}')
+def search_amazon(context, search_query):
+    context.app.header.search_for_product(search_query)
+
+
+# Then Statements:
+
+@then('Verify correct department shown')
+def verify_dept(context):
+    context.app.search_results_page.verify_dept()
+
+
+@then('Verify search results shown for {expected_result}')
+def verify_search_results(context, expected_result):
+    context.app.search_results_page.verify_search_results(expected_result)
+
+
+# assert expected_result in actual_result
+@then('Verify the cart has the right product')
+def verify_Kindle_text_appears_in_product_title(context, ):
+    actual_result = context.driver.find_element(By.CSS_SELECTOR, 'span.a-truncate-cut').text
+    assert 'Kindle' in actual_result

@@ -13,4 +13,9 @@ Feature: Amazon Search tests
 
 
 
+  Scenario: User can see language options
+    Given Open amazon main page
+    When Hover over language options
+    Then Verify spanish option is present
+
 

@@ -7,11 +7,13 @@ class SearchResultsPage(Page):
     BACKPACK_RESULT = (By.CSS_SELECTOR, 'span.a-price-whole')
     SEARCH_FILED = (By.ID, 'twotabsearchtextbox')
     SEARCH_BTN = (By.ID, 'nav-search-submit-button')
+    BOOKS_SUBMENU = (By.CSS_SELECTOR, "a[aria-label= 'Books']")
 
     def verify_search_results(self, expected_result):
         self.verify_element_text(expected_result, *self.RESULT_TEXT)
 
-    def click_search_item(self,):
+    def click_search_item(self, ):
         self.find_element(*self.BACKPACK_RESULT).click()
 
-
+    def verify_dept(self):
+        self.wait_for_element_appear(*self.BOOKS_SUBMENU)

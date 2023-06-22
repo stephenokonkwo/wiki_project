@@ -32,6 +32,16 @@ def open_amazon_product_page(context):
     # When: Statements
 
 
+@when('Select department books')
+def select_dept(context):
+    context.app.header.select_dept()
+
+
+@when('Hover over language options')
+def hover_lang(context):
+    context.app.header.hover_lang()
+
+
 @when('Click on button from SignIn popup')
 def click_sign_in_popup_btn(context):
     context.driver.wait.until(
@@ -44,9 +54,9 @@ def wait_sec(context, sec_amount):
     sleep(int(sec_amount))
 
 
-@when('Search for {search_query}')
-def search_amazon(context, search_query):
-    context.app.header.search_for_product(search_query)
+# @when('Search for {search_query}')
+# def search_amazon(context, search_query):
+#     context.app.header.search_for_product(search_query)
 
 
 @when('Click Orders')
@@ -78,3 +88,8 @@ def verify_signin_popup_btn_disappears(context):
     context.driver.wait.until(
         EC.invisibility_of_element_located(POPUP_SIGNIN_BTN),
         message='Signin btn did not disappear')
+
+
+@then('Verify spanish option is present')
+def verify_spanish_option(context):
+    context.app.header.verify_spanish_option()
