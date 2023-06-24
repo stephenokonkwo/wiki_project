@@ -13,6 +13,7 @@ BACKPACK_RESULT = (By.CSS_SELECTOR, 'span.a-price-whole')
 
 
 # When Statements:
+
 @when('Click on kindle item')
 def click_search_item(context):
     context.driver.find_element(By.CSS_SELECTOR, KINDLE_RESULT).click()
@@ -34,6 +35,11 @@ def search_amazon(context, search_query):
 
 
 # Then Statements:
+
+@then('Verify correct department All Electronics is shown')
+def verify_all_electronic_dept(context):
+    context.app.search_results_page.verify_all_electronic_dept()
+
 
 @then('Verify correct department shown')
 def verify_dept(context):

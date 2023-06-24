@@ -12,7 +12,6 @@ CART_BTN = (By.ID, 'nav-cart')
 
 
 # Given: Statements
-
 @given('Open amazon main page')
 def open_main_page(context):
     context.app.main_page.open_main_page()
@@ -29,7 +28,11 @@ def open_amazon_product_page(context):
     context.driver.get('https://www.amazon.com/gp/product/B07BJKRR25/')
     context.driver.refresh()
 
-    # When: Statements
+
+# When: Statements
+@when('Select department electronics')
+def select_electronic_dept(context):
+    context.app.header.select_electronic_dept()
 
 
 @when('Select department books')

@@ -33,3 +33,10 @@ class Header(Page):
         dept_select = self.find_element(*self.DEPT_SELECT)
         select = Select(dept_select)
         select.select_by_value('search-alias=stripbooks')
+
+    def select_electronic_dept(self):
+        dept_select = self.find_element(*self.DEPT_SELECT)
+        select = Select(dept_select)
+        select.select_by_value('search-alias=electronics')
+
+

@@ -10,7 +10,7 @@ Feature: Amazon Search tests
     When Search for coffee
     Then Verify search results shown for "coffee"
 
-  Scenario Outline outline: User can search on Amazon
+  Scenario Outline: User can search on Amazon
     Given Open amazon main page
     When Search for <search_word>
     Then Verify search results shown for <search_result>
@@ -35,4 +35,10 @@ Feature: Amazon Search tests
     When Select department books
     When Search for Faust
     Then Verify correct department shown
+
+  Scenario: Verify that User can search in a department
+    Given Open amazon main page
+    When Select department electronics
+    When Search for Controller
+    Then Verify correct department All Electronics is shown
 

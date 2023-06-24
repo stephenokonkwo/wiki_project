@@ -10,7 +10,6 @@ class CartPage(Page):
     ADD_TO_CART_BTN = (By.ID, 'add-to-cart-button')
     ITEM_TITLE = (By.CSS_SELECTOR, 'span.a-truncate.sc-grid-item-product-title.a-size-base-plus')
 
-
     def verify_amazon_cart_is_empty(self):
         self.driver.wait.until(EC.url_contains('https://www.amazon.com/gp/cart/view.html?ref_=nav_cart'))
         self.verify_element_text('Your Amazon Cart is empty', *self.CART_EMPTY)
