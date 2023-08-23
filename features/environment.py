@@ -5,23 +5,31 @@ from selenium.webdriver.support.wait import WebDriverWait
 from app.application import Application
 
 
+# Allure command:
+# python3 -m behave -f allure_behave.formatter:AllureFormatter -o test_results/feature/test/
+
 def browser_init(context):
     # """
     # :param context: Behave context
     # """
 
-    #### CHROME-CROSS BROWSER- DEFAULT BROWSER ####
+    ####  DEFAULT BROWSER: CHROME-CROSS BROWSER-  ####
+    ## regular way
     # driver_path = ChromeDriverManager().install()
-    # service = Service(driver_path)
-    # context.driver = webdriver.Chrome(service=service)
+    # service = Service(executable_path=driver_path)
 
-    #### FIREFOX-CROSS BROWSER ####
+    # run on chrome for testing
+    service = Service(executable_path='/Users/stephenokonkwo/Desktop/cureskin_project/chromedriver')
+
+    context.driver = webdriver.Chrome(service=service)
+
+    ####   FIREFOX-CROSS BROWSER   ####
     # context.driver = webdriver.Firefox(executable_path='')
 
-    #### SAFARI-CROSS BROWSER ####
+    ####   SAFARI-CROSS BROWSER   ####
     # context.driver = webdriver.Safari()
 
-    #### HEADLESS MODE ####
+    ####   HEADLESS MODE   ####
     # driver_path = ChromeDriverManager().install()
     # service = Service(driver_path)
     # options = webdriver.ChromeOptions()
@@ -32,7 +40,7 @@ def browser_init(context):
     #     service=service
     # )
 
-    #### BROWSERSTACK ####
+    ####   BROWSERSTACK   ####
     # desired_cap = {
     #     'browser': 'Firefox',
     #     'os_version': '11',
@@ -43,6 +51,15 @@ def browser_init(context):
     # bs_key = ''
     # url = f'http://{bs_user}:{bs_key}@hub-cloud.browserstack.com/wd/hub'
     # context.driver = webdriver.Remote(url, desired_capabilities=desired_cap)
+
+    #### MOBILE EMULATOR ####
+    # mobile_emulation = {"deviceName": "iPhone 12 Pro"}
+    #
+    # chrome_options = webdriver.ChromeOptions()
+    #
+    # chrome_options.add_experimental_option("mobileEmulation", mobile_emulation)
+    #
+    # context.driver = webdriver.Chrome(options=chrome_options)
 
     context.driver.maximize_window()
     context.driver.implicitly_wait(4)
